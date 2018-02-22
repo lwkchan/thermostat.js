@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Thermostat', function(){
 
   var thermostat;
@@ -21,18 +23,33 @@ describe('Thermostat', function(){
   });
 
   it('has a minimum temperature of 10 degrees', function(){
-    for(i = 1; i <= 10; i++){
+    for(var i = 1; i <= 10; i++){
       thermostat.down();
     }
     expect(function(){thermostat.down()}).toThrow('Minimum temperature reached');
   });
 
   it('has a reset function to reset to 20 degrees', function(){
-    for(i = 1; i <= 4; i++){
+    for(var i = 1; i <= 4; i++){
       thermostat.up();
     }
     thermostat.reset();
     expect(thermostat.temperature).toEqual(DEFAULT_TEMP)
+  });
+
+  describe('Energy usage', function(){
+    it('returns "low-usage" for temperatures < 18', function(){
+      thermostat.temperature = 17;
+      expect(thermostat.energyUsage()).toEqual('low-usage')
+    });
+    it('returns "medium-usage" for temperatures between 18 and 24', function(){
+      thermostat.temperature = 22;
+      expect(thermostat.energyUsage()).toEqual('medium-usage')
+    });
+    it('returns "high-usage" for temperatures > 24 ', function(){
+      thermostat.temperature = 26;
+      expect(thermostat.energyUsage()).toEqual('high-usage')
+    });
   });
 
   describe('Power saving mode', function(){
@@ -41,7 +58,7 @@ describe('Thermostat', function(){
     });
 
     it('sets a maximum temperature of 25 degrees', function(){
-      for(i = 1; i <= 5; i++){
+      for(var i = 1; i <= 5; i++){
         thermostat.up();
       }
       expect(function() {thermostat.up()}).toThrow('Maximum temperature reached');
@@ -51,7 +68,7 @@ describe('Thermostat', function(){
   describe('Power saving off', function(){
     it('sets a maximum temperature of 32 degrees', function(){
       thermostat.powerSave = false;
-      for(i = 1; i <= 12; i++) {
+      for(var i = 1; i <= 12; i++) {
         thermostat.up();
       }
       expect(function() {thermostat.up()}).toThrow('Maximum temperature reached');

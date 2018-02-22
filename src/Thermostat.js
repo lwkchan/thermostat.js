@@ -1,3 +1,5 @@
+'use strict';
+
 const MIN_TEMP = 10;
 const DEFAULT_TEMP = 20;
 
@@ -25,5 +27,14 @@ Thermostat.prototype = {
   },
   reset: function() {
     this.temperature = DEFAULT_TEMP;
-  }
+  },
+  energyUsage: function(){
+    if (this.temperature < 18){
+      return 'low-usage';
+    } else if (this.temperature < 25){
+      return 'medium-usage';
+    } else {
+      return 'high-usage';
+    }
+  },
 };
