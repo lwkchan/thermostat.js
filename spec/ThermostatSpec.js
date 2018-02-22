@@ -23,16 +23,12 @@ describe('Thermostat', function(){
   });
 
   it('has a minimum temperature of 10 degrees', function(){
-    for(var i = 1; i <= 10; i++){
-      thermostat.down();
-    }
+    thermostat.temperature = 10;
     expect(function(){thermostat.down()}).toThrow('Minimum temperature reached');
   });
 
   it('has a reset function to reset to 20 degrees', function(){
-    for(var i = 1; i <= 4; i++){
-      thermostat.up();
-    }
+    thermostat.temperature = 24;
     thermostat.reset();
     expect(thermostat.temperature).toEqual(DEFAULT_TEMP)
   });
@@ -58,9 +54,7 @@ describe('Thermostat', function(){
     });
 
     it('sets a maximum temperature of 25 degrees', function(){
-      for(var i = 1; i <= 5; i++){
-        thermostat.up();
-      }
+      thermostat.temperature = 25;
       expect(function() {thermostat.up()}).toThrow('Maximum temperature reached');
     });
   });
@@ -68,9 +62,7 @@ describe('Thermostat', function(){
   describe('Power saving off', function(){
     it('sets a maximum temperature of 32 degrees', function(){
       thermostat.powerSave = false;
-      for(var i = 1; i <= 12; i++) {
-        thermostat.up();
-      }
+      thermostat.temperature = 32;
       expect(function() {thermostat.up()}).toThrow('Maximum temperature reached');
     });
   });
