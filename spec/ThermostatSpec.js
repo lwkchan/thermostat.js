@@ -3,9 +3,21 @@
 describe('Thermostat', function(){
 
   var thermostat;
+  var tempUp;
+  var tempDown;
 
   beforeEach(function(){
     thermostat = new Thermostat();
+    tempUp = function(number) {
+      for (var i = 0; i < number; i++) {
+        thermostat.up();
+      }
+    };
+    tempDown = function(number) {
+      for (var i = 0; i < number; i++) {
+        thermostat.down();
+      }
+    };
   });
 
   it('has a default setting of 20 degrees', function(){
@@ -23,27 +35,28 @@ describe('Thermostat', function(){
   });
 
   it('has a minimum temperature of 10 degrees', function(){
-    thermostat.temperature = 10;
+    tempDown(10);
     expect(function(){thermostat.down()}).toThrow('Minimum temperature reached');
   });
 
   it('has a reset function to reset to 20 degrees', function(){
-    thermostat.temperature = 24;
+    tempUp(4);
     thermostat.reset();
     expect(thermostat.temperature).toEqual(DEFAULT_TEMP)
   });
 
   describe('Energy usage', function(){
     it('returns "low-usage" for temperatures < 18', function(){
-      thermostat.temperature = 17;
+      tempDown(3);
       expect(thermostat.energyUsage()).toEqual('low-usage')
     });
     it('returns "medium-usage" for temperatures between 18 and 24', function(){
-      thermostat.temperature = 22;
+      tempUp(2);
       expect(thermostat.energyUsage()).toEqual('medium-usage')
     });
     it('returns "high-usage" for temperatures > 24 ', function(){
-      thermostat.temperature = 26;
+      thermostat.powerSave = false;
+      tempUp(6);
       expect(thermostat.energyUsage()).toEqual('high-usage')
     });
   });
@@ -54,7 +67,7 @@ describe('Thermostat', function(){
     });
 
     it('sets a maximum temperature of 25 degrees', function(){
-      thermostat.temperature = 25;
+      tempUp(5);
       expect(function() {thermostat.up()}).toThrow('Maximum temperature reached');
     });
   });
@@ -62,7 +75,7 @@ describe('Thermostat', function(){
   describe('Power saving off', function(){
     it('sets a maximum temperature of 32 degrees', function(){
       thermostat.powerSave = false;
-      thermostat.temperature = 32;
+      tempUp(12);
       expect(function() {thermostat.up()}).toThrow('Maximum temperature reached');
     });
   });
