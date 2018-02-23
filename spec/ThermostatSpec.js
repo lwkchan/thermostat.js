@@ -21,7 +21,7 @@ describe('Thermostat', function(){
   });
 
   it('has a default setting of 20 degrees', function(){
-    expect(thermostat.temperature).toEqual(DEFAULT_TEMP);
+    expect(thermostat.temperature).toEqual(thermostat.DEFAULT_TEMP);
   });
 
   it('can increase the temperature with up function', function(){
@@ -42,7 +42,7 @@ describe('Thermostat', function(){
   it('has a reset function to reset to 20 degrees', function(){
     tempUp(4);
     thermostat.reset();
-    expect(thermostat.temperature).toEqual(DEFAULT_TEMP)
+    expect(thermostat.temperature).toEqual(thermostat.DEFAULT_TEMP)
   });
 
   describe('Energy usage', function(){
