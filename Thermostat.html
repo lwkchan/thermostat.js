@@ -3,27 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Thermostat</title>
-    <script type="text/javascript" src="src/Thermostat.js">
-    </script>
-    <style media="screen">
-      .container {
-        text-align: center;
-        margin: 0 auto;
-      }
-
-      .test {
-        color: red;
-      }
-
-      .color {
-        background-color: green
-      }
-
-      .power {
-        color: red;
-        font-size: 32px;
-      }
-    </style>
+    <script type="text/javascript" src="src/Thermostat.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
       <div class="container">
@@ -38,32 +19,27 @@
         <div class="power-save-switch">
           <button type="button" name="power-save" id="power-save">Eco-mode</button>
         </div>
-        <div id="fade-message">
-          <p id="power-save-message">Power save on!</p>
-          <p id="temp-up-message">Temperature turned up!</p>
-          <p id="temp-down-message">Temperature turned down!</p>
-        </div>
       </div>
 
       <script src="jquery.js"></script>
       <script>
-        $( "button" ).addClass( "test" );
-        $("p").addClass("power")
-        $( "h1" ).addClass( "color" );
-        $(".container").hide().slideToggle(10000);
-        $("#power-save-message").hide();
-        $("#temp-up-message").hide();
-        $("#temp-down-message").hide();
-        $("h1").slideDown()
-        $( "#power-save" ).click(function(){
-          $( "#power-save-message").fadeIn("slow", "linear").delay(300).fadeOut("slow", "linear");
-        });
-        $( "#up" ).click(function(){
-          $( "#temp-up-message").fadeIn("slow", "linear").delay(300).fadeOut("slow", "linear");
-        });
-        $( "#down" ).click(function(){
-          $( "#temp-down-message").fadeIn("slow", "linear").delay(300).fadeOut("slow", "linear");
-        });
+        // $( "button" ).addClass( "test" );
+        // $("p").addClass("power")
+        // $( "h1" ).addClass( "color" );
+        // $(".container").hide().slideToggle(10000);
+        // $("#power-save-message").hide();
+        // $("#temp-up-message").hide();
+        // $("#temp-down-message").hide();
+        // $("h1").slideDown()
+        // $( "#power-save" ).click(function(){
+        //   $( "#power-save-message").fadeIn("slow", "linear").delay(300).fadeOut("slow", "linear");
+        // });
+        // $( "#up" ).click(function(){
+        //   $( "#temp-up-message").fadeIn("slow", "linear").delay(300).fadeOut("slow", "linear");
+        // });
+        // $( "#down" ).click(function(){
+        //   $( "#temp-down-message").fadeIn("slow", "linear").delay(300).fadeOut("slow", "linear");
+        // });
       </script>
   </body>
 </html>

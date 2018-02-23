@@ -1,0 +1,24 @@
+body {
+
+}
+
+.container {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  border: 3px solid black;
+  text-align: center;
+  margin: 150px auto;
+  font-family: sans-serif;
+}
+
+.temp-display {
+  margin: 140px auto;
+  font-size: 50px;
+}
+
+button {
+  background-color: magenta;
+  border-radius: 30%;
+  border: solid blue;
+}
