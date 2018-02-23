@@ -11,21 +11,47 @@
         text-align: center;
         margin: 0 auto;
       }
+
+      .test {
+        color: red;
+      }
+
+      .color {
+        background-color: green
+      }
+
+      .power {
+        color: red;
+        font-size: 32px;
+      }
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="temp-display">
-        <h1>20</h1>
+
+      <div class="container">
+        <div class="temp-display">
+          <h1>20</h1>
+        </div>
+        <div class="temp-controls">
+          <button type="button" name="up" id="up">Up</button>
+          <button type="button" name="down" id="down">Down</button> <br>
+          <button type="button" name="reset" id="reset">Reset</button>
+        </div>
+        <div class="power-save-switch">
+          <button type="button" name="power-save" id="power-save">Eco-mode</button>
+        </div>
+        <div id="fade-message"></div>
       </div>
-      <div class="temp-controls">
-        <button type="button" name="up" id="up">Up</button>
-        <button type="button" name="down" id="down">Down</button> <br>
-        <button type="button" name="reset" id="reset">Reset</button>
-      </div>
-      <div class="power-save-switch">
-        <button type="button" name="power-save" id="power-save">Eco-mode</button>
-      </div>
-    </div>
+
+      <script src="jquery.js"></script>
+      <script>
+        $( "button" ).addClass( "test" );
+        $("p").addClass("power")
+        $( "h1" ).addClass( "color" );
+        $( "#power-save" ).click(function(){
+          $( "#fade-message" ).append("<p>Power save on!!</p>")
+          $( "#fade-message").fadeOut( "slow", "linear" ).delay(500).fadeIn();
+        })
+      </script>
   </body>
 </html>
