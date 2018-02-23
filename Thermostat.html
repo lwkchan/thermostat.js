@@ -29,7 +29,22 @@
 
       <script src="jquery.js"></script>
       <script>
-  
+        $("p").addClass("power")
+        $( "h1" ).addClass( "color" );
+        $(".container").hide().slideToggle(10000);
+        $("#power-save-message").hide();
+        $("#temp-up-message").hide();
+        $("#temp-down-message").hide();
+        $("h1").slideDown()
+        $( "#power-save" ).click(function(){
+          $( "#power-save-message").fadeIn("slow", "linear").delay(300).fadeOut("slow", "linear");
+        });
+        $( "#up" ).click(function(){
+          $( "#temp-up-message").fadeIn("slow", "linear").delay(300).fadeOut("slow", "linear");
+        });
+        $( "#down" ).click(function(){
+          $( "#temp-down-message").fadeIn("slow", "linear").delay(300).fadeOut("slow", "linear");
+        });
       </script>
   </body>
 </html>
