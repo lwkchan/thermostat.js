@@ -9,42 +9,25 @@
   <body>
       <div class="container">
         <div class="temp-display">
-          <h1>20</h1>
+          <h1 id="text"></h1>
         </div>
       </div>
       <div class="temp-controls">
-        <div class="button" id="power-save">
-          <button type="button" name="power-save">Eco-mode</button>
+        <div class="button">
+          <button id="power-save" type="button" name="power-save">Eco-mode</button>
         </div>
-        <div class="button" id="reset">
-          <button type="button" name="reset">Reset</button>
+        <div class="button" >
+          <button id="reset" type="button" name="reset">Reset</button>
         </div>
-        <div class="button" id="up">
-          <button type="button" name="up">Up</button>
+        <div class="button">
+          <button id="up" type="button" name="up">Up</button>
         </div>
-        <div class="button" id="down">
-          <button type="button" name="down" id="down">Down</button>
+        <div class="button" >
+          <button id="down" type="button" name="down">Down</button>
         </div>
       </div>
 
       <script src="jquery.js"></script>
-      <script>
-        $("p").addClass("power")
-        $( "h1" ).addClass( "color" );
-        $(".container").hide().slideToggle(10000);
-        $("#power-save-message").hide();
-        $("#temp-up-message").hide();
-        $("#temp-down-message").hide();
-        $("h1").slideDown()
-        $( "#power-save" ).click(function(){
-          $( "#power-save-message").fadeIn("slow", "linear").delay(300).fadeOut("slow", "linear");
-        });
-        $( "#up" ).click(function(){
-          $( "#temp-up-message").fadeIn("slow", "linear").delay(300).fadeOut("slow", "linear");
-        });
-        $( "#down" ).click(function(){
-          $( "#temp-down-message").fadeIn("slow", "linear").delay(300).fadeOut("slow", "linear");
-        });
-      </script>
+      <script src="interface.js"></script>
   </body>
 </html>
