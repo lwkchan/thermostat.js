@@ -70,11 +70,29 @@ describe('Thermostat', function(){
       tempUp(5);
       expect(function() {thermostat.up()}).toThrow('Maximum temperature reached');
     });
+
+    it('can be switched off', function(){
+      thermostat.setPowerSave()
+      expect(thermostat.powerSave).toEqual(false)
+    });
+
+    it('can be switched on', function(){
+      thermostat.setPowerSave()
+      thermostat.setPowerSave()
+      expect(thermostat.powerSave).toEqual(true)
+    });
+
+    it('changes the temperature to PS_MAX_TEMP when switched on with a temp above 25', function(){
+      thermostat.setPowerSave();
+      tempUp(10);
+      thermostat.setPowerSave();
+      expect(thermostat.temperature).toEqual(thermostat.PS_MAX_TEMP);
+    });
   });
 
   describe('Power saving off', function(){
     it('sets a maximum temperature of 32 degrees', function(){
-      thermostat.powerSave = false;
+      thermostat.setPowerSave();
       tempUp(12);
       expect(function() {thermostat.up()}).toThrow('Maximum temperature reached');
     });

@@ -1,8 +1,5 @@
 'use strict';
 
-// const MIN_TEMP = 10;
-// const DEFAULT_TEMP = 20;
-
 var Thermostat = function() {
   this.powerSave = true;
   this.MIN_TEMP = 10;
@@ -34,13 +31,20 @@ Thermostat.prototype = {
   reset: function() {
     this.temperature = this.DEFAULT_TEMP;
   },
-  energyUsage: function(){
+  energyUsage: function() {
     if (this.temperature < this.LOW_ENERGY_TEMP){
       return 'low-usage';
     } else if (this.temperature < this.MED_ENERGY_TEMP){
       return 'medium-usage';
     } else {
       return 'high-usage';
+    }
+  },
+
+  setPowerSave: function() {
+    this.powerSave = !this.powerSave;
+    if (this.powerSave === true && this.temperature > this.PS_MAX_TEMP){
+      this.temperature = this.PS_MAX_TEMP;
     }
   },
 };
